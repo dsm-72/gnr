@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "mock.html",
+    "href": "mock.html",
+    "title": "mock",
+    "section": "",
+    "text": "source\n\nmake_dummy_cells\n\n make_dummy_cells (n:int)\n\n\nsource\n\n\nmake_dummy_genes\n\n make_dummy_genes (n:int)\n\n\nsource\n\n\nmake_mock_genes_x_tbins\n\n make_mock_genes_x_tbins (genes:Union[int,List[str],NoneType]=['wasf',\n                          'colq', 'gpr1', 'chrm3', 'lmod2', 'tek',\n                          'kank3', 'oca2', 'taz', 'map4k1'],\n                          tbins:int=100)\n\n\ndf_trj = make_mock_genes_x_tbins()\ndf_trj.head()\n\n\n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n...\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n\n\n\n\nwasf\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n...\n8\n9\n9\n9\n9\n9\n9\n9\n9\n9\n\n\ncolq\n9\n9\n9\n9\n9\n8\n8\n8\n8\n8\n...\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\ngpr1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n...\n9\n9\n9\n9\n9\n9\n9\n9\n9\n9\n\n\nchrm3\n9\n9\n9\n9\n9\n9\n9\n9\n9\n9\n...\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\nlmod2\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n...\n8\n9\n9\n9\n9\n9\n9\n9\n9\n9\n\n\n\n\n5 rows × 100 columns\n\n\n\n\nsource\n\n\nmake_mock_trajectories\n\n make_mock_trajectories (tbins:int=100, cells:int=50, genes:int=10)\n\n\ntrajs = make_mock_trajectories()\ntrajs.shape # (tbins, cells, genes)\n\n(100, 50, 10)\n\n\n\nsource\n\n\ndf_trj_to_genes_x_tbins\n\n df_trj_to_genes_x_tbins (trajectories:numpy.ndarray, agg_fn=&lt;function\n                          mean at 0x7f5c4ed82a70&gt;)\n\nTranspose and aggregate trajectories matrix (timebinse, cells, gene) to produce (genes, timebins)\n\nsource\n\n\ndf_trj_to_cells_x_tbins\n\n df_trj_to_cells_x_tbins (trajectories:numpy.ndarray, agg_fn=&lt;function\n                          mean at 0x7f5c4ed82a70&gt;)\n\nTranspose and aggregate trajectories matrix (timebinse, cells, gene) to produce (cells, timebins)\n\ndf_trj_to_genes_x_tbins(trajs).shape\n\n(10, 100)"
+  },
+  {
+    "objectID": "fn.html",
+    "href": "fn.html",
+    "title": "funcs",
+    "section": "",
+    "text": "source\n\n\n\n shift_trajectories (df:pandas.core.frame.DataFrame,\n                     shift:Optional[int]=10, copy:Optional[bool]=True)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ndf\nDataFrame\n\nPandas DataFrame where rows are the response variable (genes), and columns are predictors (expression).\n\n\nshift\nOptional\n10\nnumber to shift df’s values by\n\n\ncopy\nOptional\nTrue\nWhether or not to copy input df\n\n\nReturns\nDataFrame\n\nPandas DataFrame of df - df_shift\n\n\n\n\nsource\n\n\n\n\n get_pval_from_granger_causality_tests (df:pandas.core.frame.DataFrame,\n                                        test:Optional[str]='ssr_chi2test',\n                                        lag_order:Optional[int]=1,\n                                        max_lag:Optional[tuple]=(1,))\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ndf\nDataFrame\n\nPandas DataFrame where rows are the response variable (genes), and columns are predictors (expression).\n\n\ntest\nOptional\nssr_chi2test\nthe kind of statistical test to use\n\n\nlag_order\nOptional\n1\nhow long to lag\n\n\nmax_lag\nOptional\n(1,)\nif None coerced to (1, )\n\n\nReturns\nfloat\n\nminimum p-value of Granger Causality Tests"
+  },
+  {
+    "objectID": "fn.html#shift-trajectories",
+    "href": "fn.html#shift-trajectories",
+    "title": "funcs",
+    "section": "",
+    "text": "source\n\n\n\n shift_trajectories (df:pandas.core.frame.DataFrame,\n                     shift:Optional[int]=10, copy:Optional[bool]=True)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ndf\nDataFrame\n\nPandas DataFrame where rows are the response variable (genes), and columns are predictors (expression).\n\n\nshift\nOptional\n10\nnumber to shift df’s values by\n\n\ncopy\nOptional\nTrue\nWhether or not to copy input df\n\n\nReturns\nDataFrame\n\nPandas DataFrame of df - df_shift\n\n\n\n\nsource\n\n\n\n\n get_pval_from_granger_causality_tests (df:pandas.core.frame.DataFrame,\n                                        test:Optional[str]='ssr_chi2test',\n                                        lag_order:Optional[int]=1,\n                                        max_lag:Optional[tuple]=(1,))\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ndf\nDataFrame\n\nPandas DataFrame where rows are the response variable (genes), and columns are predictors (expression).\n\n\ntest\nOptional\nssr_chi2test\nthe kind of statistical test to use\n\n\nlag_order\nOptional\n1\nhow long to lag\n\n\nmax_lag\nOptional\n(1,)\nif None coerced to (1, )\n\n\nReturns\nfloat\n\nminimum p-value of Granger Causality Tests"
+  },
+  {
+    "objectID": "fn.html#granger-causation",
+    "href": "fn.html#granger-causation",
+    "title": "funcs",
+    "section": "Granger Causation",
+    "text": "Granger Causation\n\nsource\n\ngrangers_causation_matrix\n\n grangers_causation_matrix (df:pandas.core.frame.DataFrame, x_vars:Union[l\n                            ist,pandas.core.series.Series,numpy.ndarray,It\n                            erable[numbers.Number],Any,List[int],List[Unio\n                            n[bool,numpy.bool_,Literal[0],Literal[1]]],pan\n                            das.core.indexes.base.Index,NoneType]=None, y_\n                            vars:Union[list,pandas.core.series.Series,nump\n                            y.ndarray,Iterable[numbers.Number],Any,List[in\n                            t],List[Union[bool,numpy.bool_,Literal[0],Lite\n                            ral[1]]],pandas.core.indexes.base.Index,NoneTy\n                            pe]=None, test:Optional[str]='ssr_chi2test',\n                            lag_order:Optional[int]=1,\n                            max_lag:Optional[tuple]=(1,),\n                            n_jobs:Optional[int]=-1)\n\nComputes Granger Causality\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ndf\nDataFrame\n\nPandas DataFrame where rows are the response variable (genes), and columns are predictors (expression).\n\n\nx_vars\nUnion\nNone\nA subset of response variable (genes) to compute granger’s causality test with. If not provided, defaults to df.index.values i.e. all rows in df.\n\n\ny_vars\nUnion\nNone\nA subset of response variable (genes) to compute granger’s causality test with. If not provided, defaults to df.index.values i.e. all rows in df.\n\n\ntest\nOptional\nssr_chi2test\nthe kind of statistical test to use\n\n\nlag_order\nOptional\n1\nhow long to lag\n\n\nmax_lag\nOptional\n(1,)\nif None coerced to (1, )\n\n\nn_jobs\nOptional\n-1\nnumber of cpu threads to use during calculation\n\n\nReturns\nDataFrame\n\nPandas DataFrame with shape (len(x_vars), len(y_vars)) containing theminimum p-value from Granger’s Causation Tests\n\n\n\n\nsource\n\n\ncalculate_granger_causation\n\n calculate_granger_causation (df:pandas.core.frame.DataFrame, x_vars:Union\n                              [list,pandas.core.series.Series,numpy.ndarra\n                              y,Iterable[numbers.Number],Any,List[int],Lis\n                              t[Union[bool,numpy.bool_,Literal[0],Literal[\n                              1]]],pandas.core.indexes.base.Index,NoneType\n                              ]=None, y_vars:Union[list,pandas.core.series\n                              .Series,numpy.ndarray,Iterable[numbers.Numbe\n                              r],Any,List[int],List[Union[bool,numpy.bool_\n                              ,Literal[0],Literal[1]]],pandas.core.indexes\n                              .base.Index,NoneType]=None,\n                              shift:Optional[int]=10,\n                              test:Optional[str]='ssr_chi2test',\n                              lag_order:Optional[int]=1,\n                              max_lag:Optional[tuple]=(1,),\n                              n_jobs:Optional[int]=-1)\n\nComputes Granger Causality\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ndf\nDataFrame\n\nPandas DataFrame where rows are the response variable (genes), and columns are predictors (expression).\n\n\nx_vars\nUnion\nNone\nA subset of response variable (genes) to compute granger’s causality test with. If not provided, defaults to df.index.values i.e. all rows in df.\n\n\ny_vars\nUnion\nNone\nA subset of response variable (genes) to compute granger’s causality test with. If not provided, defaults to df.index.values i.e. all rows in df.\n\n\nshift\nOptional\n10\nnumber to shift df’s values by\n\n\ntest\nOptional\nssr_chi2test\nthe kind of statistical test to use\n\n\nlag_order\nOptional\n1\nhow long to lag\n\n\nmax_lag\nOptional\n(1,)\nif None coerced to (1, )\n\n\nn_jobs\nOptional\n-1\nnumber of cpu threads to use during calculation\n\n\nReturns\nDataFrame\n\nPandas DataFrame with shape (len(x_vars), len(y_vars)) containing theminimum p-value from Granger’s Causation Tests"
+  },
+  {
+    "objectID": "utils.html",
+    "href": "utils.html",
+    "title": "utils",
+    "section": "",
+    "text": "source\n\n\n\n apply_standard_scaler (df:pandas.core.frame.DataFrame,\n                        return_scaler:Optional[bool]=False)\n\n\nsource\n\n\n\n\n apply_signed_correlation (df_tseries:pandas.core.frame.DataFrame,\n                           df_granger:pandas.core.frame.DataFrame)\n\n\nsource\n\n\n\n\n apply_log2_fold (df_granger:pandas.core.frame.DataFrame)\n\n\nsource\n\n\n\n\n add_non_const (df)\n\n\nsource\n\n\n\n\n add_stability (df)\n\n\nsource\n\n\n\n\n make_stable (df:pandas.core.frame.DataFrame, copy:Optional[bool]=True,\n              add_perm:Optional[bool]=True, use_rand:Optional[bool]=False,\n              no_const:Optional[bool]=True)"
+  },
+  {
+    "objectID": "utils.html#simple",
+    "href": "utils.html#simple",
+    "title": "utils",
+    "section": "",
+    "text": "source\n\n\n\n apply_standard_scaler (df:pandas.core.frame.DataFrame,\n                        return_scaler:Optional[bool]=False)\n\n\nsource\n\n\n\n\n apply_signed_correlation (df_tseries:pandas.core.frame.DataFrame,\n                           df_granger:pandas.core.frame.DataFrame)\n\n\nsource\n\n\n\n\n apply_log2_fold (df_granger:pandas.core.frame.DataFrame)\n\n\nsource\n\n\n\n\n add_non_const (df)\n\n\nsource\n\n\n\n\n add_stability (df)\n\n\nsource\n\n\n\n\n make_stable (df:pandas.core.frame.DataFrame, copy:Optional[bool]=True,\n              add_perm:Optional[bool]=True, use_rand:Optional[bool]=False,\n              no_const:Optional[bool]=True)"
+  },
+  {
+    "objectID": "utils.html#kpss-test",
+    "href": "utils.html#kpss-test",
+    "title": "utils",
+    "section": "KPSS Test",
+    "text": "KPSS Test\n\nsource\n\nkpss_test\n\n kpss_test (series, print:Optional[bool]=False, **kwargs)"
+  },
+  {
+    "objectID": "utils.html#default-args",
+    "href": "utils.html#default-args",
+    "title": "utils",
+    "section": "Default Args",
+    "text": "Default Args"
+  },
+  {
+    "objectID": "op.html",
+    "href": "op.html",
+    "title": "Granger Causality Operator",
+    "section": "",
+    "text": "/opt/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Notes\n  else: warn(msg)\n/opt/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section See Also\n  else: warn(msg)\n\nsource\n\nGrangerCausality\n\n GrangerCausality (x_vars:Union[list,pandas.core.series.Series,numpy.ndarr\n                   ay,Iterable[numbers.Number],Any,List[int],List[Union[bo\n                   ol,numpy.bool_,Literal[0],Literal[1]]],pandas.core.inde\n                   xes.base.Index,NoneType]=None, y_vars:Union[list,pandas\n                   .core.series.Series,numpy.ndarray,Iterable[numbers.Numb\n                   er],Any,List[int],List[Union[bool,numpy.bool_,Literal[0\n                   ],Literal[1]]],pandas.core.indexes.base.Index,NoneType]\n                   =None, shift:Optional[int]=10,\n                   test:Optional[str]='ssr_chi2test',\n                   lag_order:Optional[int]=1,\n                   max_lag:Optional[tuple]=(1,), n_jobs:Optional[int]=-1)\n\nComputes Granger Causality Check Granger Causality of all possible combinations of the Time series.\nThe rows are the response variable, columns are predictors. The values in the table are the P-Values. P-Values lesser than the significance level (0.05), implies the Null Hypothesis that the coefficients of the corresponding past values is zero, that is, the X does not cause Y can be rejected.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nx_vars\nUnion\nNone\nA subset of response variable (features) to compute granger’s causality test with. If not provided, defaults to df.index.values i.e. all rows in df.\n\n\ny_vars\nUnion\nNone\nA subset of response variable (features) to compute granger’s causality test with. If not provided, defaults to df.index.values i.e. all rows in df.\n\n\nshift\nOptional\n10\nnumber to shift df’s values by\n\n\ntest\nOptional\nssr_chi2test\nthe kind of statistical test to use\n\n\nlag_order\nOptional\n1\nhow long to lag\n\n\nmax_lag\nOptional\n(1,)\nif None coerced to (1, )\n\n\nn_jobs\nOptional\n-1\nnumber of cpu threads to use during calculation\n\n\nReturns\npd.DataFrame\n\nPandas DataFrame with shape (len(x_vars), len(y_vars)) containing theminimum p-value from Granger’s Causation Tests"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "gnr",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation."
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "gnr",
+    "section": "Developer Guide",
+    "text": "Developer Guide\n\nSetup\n# create conda environment\n$ mamba env create -f env.yml\n\n# update conda environment\n$ mamba env update -n gnr --file env.yml\n# $ mamba env update -n gnr --file env.mac.yml\n\n\nInstall\npip install -e .\n\n# install from pypi\npip install gnr\n\n\nnbdev\n# activate conda environment\n$ conda activate gnr\n\n# make sure the gnr package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to the gnr package\n$ nbdev_prepare\nNote: it might be useful to use the following snippet to enable hot reloading:\n%load_ext autoreload\n%autoreload 2\n\n\nPublishing\n# publish to pypi\n$ nbdev_pypi\n\n# publish to conda\n$ nbdev_conda --build_args '-c conda-forge'"
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "gnr",
+    "section": "Installation",
+    "text": "Installation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/dsm-72/gnr.git\nor from conda\n$ conda install -c dsm-72 gnr\nor from pypi\n$ pip install gnr\n\ndf_trj = make_mock_genes_x_tbins()\ndf_trj.head()\n\n\n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n...\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n\n\n\n\nwasf\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n...\n9\n9\n9\n9\n9\n9\n9\n9\n9\n9\n\n\ncolq\n9\n9\n9\n9\n9\n9\n9\n9\n9\n9\n...\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\ngpr1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n...\n9\n9\n9\n9\n9\n9\n9\n9\n9\n9\n\n\nchrm3\n9\n9\n9\n9\n9\n9\n9\n9\n9\n9\n...\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n\n\nlmod2\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n...\n8\n8\n8\n9\n9\n9\n9\n9\n9\n9\n\n\n\n\n5 rows × 100 columns\n\n\n\n\ngc_op = GrangerCausality(n_jobs=2)\n\n\ndf_res = gc_op.fit_transform(df_trj, fit_params={'standard_scaler':True, 'signed_correlation': True})\n\n\ndf_res.head()\n\n\n\n\n\n\n\n\nwasf_y\ncolq_y\ngpr1_y\nchrm3_y\nlmod2_y\ntek_y\nkank3_y\noca2_y\ntaz_y\nmap4k1_y\n\n\n\n\nwasf_x\n1.000000\n0.683091\n0.314458\n0.144127\n0.000818\n1.000000\n1.000000\n0.000066\n0.102470\n0.006449\n\n\ncolq_x\n1.000000\n1.000000\n0.779284\n1.000000\n1.000000\n0.001091\n0.192685\n0.675090\n1.000000\n0.806543\n\n\ngpr1_x\n0.805541\n0.042286\n1.000000\n0.892251\n0.795418\n0.823063\n1.000000\n0.542452\n0.001091\n0.852052\n\n\nchrm3_x\n0.001091\n0.073638\n0.168425\n1.000000\n0.632585\n1.000000\n0.102470\n0.542452\n1.000000\n0.367649\n\n\nlmod2_x\n0.683091\n0.000104\n0.031086\n0.220671\n1.000000\n0.683091\n0.000818\n0.367649\n1.000000\n0.017608\n\n\n\n\n\n\n\n\ngc_op.plot_df_org(figsize=(4,4))\n\n\n\n\n\ngc_op.plot_df_res(figsize=(4,4))"
+  },
+  {
+    "objectID": "index.html#documentation",
+    "href": "index.html#documentation",
+    "title": "gnr",
+    "section": "Documentation",
+    "text": "Documentation\nDocumentation can be found hosted on GitHub repository pages. Additionally you can find package manager specific guidelines on conda and pypi respectively."
+  }
+]
