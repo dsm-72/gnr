@@ -9,7 +9,7 @@ import pandas as pd, numpy as np
 from typing import List, Optional, Union
 
 # %% ../nbs/04_mock.ipynb 4
-from iza.types import SeriesLike, DataFrame, ndarray
+from atyp import SeriesLike, DataFrame, NPArray
 
 # %% ../nbs/04_mock.ipynb 5
 from .static import (MOCK_GENES)
@@ -43,7 +43,7 @@ def make_mock_trajectories(
     tbins: int = 100,
     cells: int = 50,
     genes: int = 10,
-) -> ndarray:
+) -> NPArray:
     df = pd.DataFrame()
     for i in range(cells):
         df_gxt = make_mock_genes_x_tbins(genes, tbins)
@@ -52,14 +52,14 @@ def make_mock_trajectories(
     return res
 
 # %% ../nbs/04_mock.ipynb 11
-def df_trj_to_cells_x_tbins(trajectories:ndarray, agg_fn=np.mean) -> ndarray:
+def df_trj_to_cells_x_tbins(trajectories:NPArray, agg_fn=np.mean) -> NPArray:
     '''
     Transpose and aggregate trajectories matrix (timebinse, cells, gene)
     to produce (cells, timebins)
     ''' 
     return agg_fn(np.transpose(trajectories, (1, 0, 2)), axis=2)
 
-def df_trj_to_genes_x_tbins(trajectories:ndarray, agg_fn=np.mean) -> ndarray:
+def df_trj_to_genes_x_tbins(trajectories:NPArray, agg_fn=np.mean) -> NPArray:
     '''
     Transpose and aggregate trajectories matrix (timebinse, cells, gene)
     to produce (genes, timebins)

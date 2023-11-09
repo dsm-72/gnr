@@ -9,11 +9,10 @@ import numpy as np, pandas as pd
 
 import seaborn as sns
 
-from dataclasses import dataclass, field
 from typing import Optional, ClassVar
 
 # %% ../nbs/03_op.ipynb 4
-from iza.types import SeriesLike, DataFrame
+from atyp import SeriesLike, DataFrame
 
 # %% ../nbs/03_op.ipynb 5
 from gnr.static import (

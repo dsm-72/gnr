@@ -6,7 +6,6 @@ __all__ = ['make_stable', 'add_stability', 'add_non_const', 'apply_log2_fold', '
 
 # %% ../nbs/01_utils.ipynb 3
 import pandas as pd, numpy as np
-import seaborn as sns
 
 from typing import List, Optional, Union
 
@@ -14,7 +13,7 @@ from sklearn.preprocessing import StandardScaler
 from statsmodels.tsa.stattools import kpss
 
 # %% ../nbs/01_utils.ipynb 4
-from iza.types import SeriesLike, DataFrame, ndarray
+from atyp import SeriesLike, DataFrame, NPArray
 
 # %% ../nbs/01_utils.ipynb 5
 from gnr.static import (

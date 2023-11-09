@@ -14,7 +14,7 @@ from typing import Optional
 from statsmodels.tsa.stattools import grangercausalitytests
 
 # %% ../nbs/02_fn.ipynb 4
-from iza.types import SeriesLike, DataFrame
+from atyp import SeriesLike, DataFrame
 
 # %% ../nbs/02_fn.ipynb 5
 from gnr.static import (
